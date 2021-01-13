@@ -15,6 +15,7 @@ import pymongo
 from keyboard import courses_keyboard, yes_or_no
 from utils import payment_url
 
+import pickle
 
 load_dotenv()
 #parse_mode=telegram.ParseMode.MARKDOWN
@@ -23,6 +24,7 @@ TOKEN = os.getenv('TOKEN')
 client = pymongo.MongoClient(os.getenv('DB_URL'))
 db = client[os.getenv('DB_NAME')]
 config = db.config.find_one({})['config']
+
 ENROLL, NEW_COURSE, PAYMENT_INITIATED, EMAIL_PROMPT = range(4)
 def start(updater,context):
     chat_id = updater.effective_chat.id
@@ -104,11 +106,7 @@ def main():
     dispatcher.add_handler(enroll_conv)
     dispatcher.add_handler(pay_conv)
 
-    PORT = int(os.environ.get('PORT', 7000))
-    updater.start_webhook(listen="0.0.0.0",
-                            port=int(PORT),
-                            url_path=TOKEN)
-    updater.bot.setWebhook('https://biyamu.herokuapp.com/' + TOKEN)
+    updater.start_polling()
     updater.idle()
 
 if __name__=='__main__':
