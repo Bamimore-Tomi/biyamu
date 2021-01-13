@@ -1,0 +1,13 @@
+{
+    "messages":{
+        "introduction":"Hello, welcome to this Skujies bot. Click on /enroll to register and pay for tutorials in courses of your choice.",
+        "enroll":"Please select the courses you will like to recieve tutorials on. Please click on as many courses you will like to pay for.",
+        "payment_prompt":"When you are done selecting courses, click on /payNow to make payments.",
+        "course_selected_error":"You have selected this course previously. Please select another course.",
+        "course_list": "{} . This is the list of courses you have registered for.\nPlease Click /enroll if this is wrong or you want to add more courses.",
+        "confirm_prompt":"Please click yes to confirm",
+        "email_prompt":"Please enter your valid email address.\n\nThis is the address your payment receipt will be sent to",
+        "payment_url_response":"Please click on this link {} to make payment for this month. **Please do not use this same link to make payments for another month.**"
+    },
+    "groups":[["GEG 113",427926552,"https://t.me/joinchat/GYGkGBNBkD74DpLL"],["GEG 115",428724666,"https://t.me/joinchat/GY3RulTAX8LM3zuy"],["GEG 117",323454945,"https://t.me/joinchat/E0eH4ZCv2ICz28_6"]]
+}
