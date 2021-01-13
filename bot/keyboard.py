@@ -1,7 +1,7 @@
 import json
 from telegram import InlineKeyboardButton,InlineKeyboardMarkup, KeyboardButton
 
-courses = json.load(open('config.json'))['groups']
+courses = json.load(open('./config.json'))['groups']
 def build_menu(buttons,
                n_cols,
                header_buttons=None,
