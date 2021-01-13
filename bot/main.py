@@ -21,7 +21,7 @@ import pickle
 load_dotenv()
 #parse_mode=telegram.ParseMode.MARKDOWN
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.ERROR)
-config = json.load(open("config.json"))
+config = json.load(open("./config.json"))
 TOKEN = os.getenv('TOKEN')
 client = pymongo.MongoClient(os.getenv('DB_URL'))
 db = client[os.getenv('DB_NAME')]

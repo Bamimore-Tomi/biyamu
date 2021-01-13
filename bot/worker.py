@@ -13,7 +13,7 @@ import pymongo
 
 load_dotenv()
 
-groups = json.load(open('config.json'))['groups']
+groups = json.load(open('./config.json'))['groups']
 db = pymongo.MongoClient(os.getenv('DB_URL'))[os.getenv('DB_NAME')]
 client = TelegramClient('tomibami', os.getenv('API_ID'), os.getenv('API_HASH')).start()
 
