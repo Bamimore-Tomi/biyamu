@@ -20,7 +20,7 @@ import pickle
 
 load_dotenv()
 #parse_mode=telegram.ParseMode.MARKDOWN
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.ERROR)
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.DEBUG)
 config = json.load(open("./config.json"))
 TOKEN = os.getenv('TOKEN')
 client = pymongo.MongoClient(os.getenv('DB_URL'))
@@ -107,7 +107,11 @@ def main():
     dispatcher.add_handler(enroll_conv)
     dispatcher.add_handler(pay_conv)
 
-    updater.start_polling()
+    PORT = int(os.environ.get('PORT', 7000))
+    updater.start_webhook(listen="0.0.0.0",
+                            port=int(PORT),
+                            url_path=TOKEN)
+    updater.bot.setWebhook('https://biyamu.herokuapp.com/' + TOKEN)
     updater.idle()
 
 if __name__=='__main__':
