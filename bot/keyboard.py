@@ -1,7 +1,14 @@
-import json
+import json,os
 from telegram import InlineKeyboardButton,InlineKeyboardMarkup, KeyboardButton
+import pymongo
+from dotenv import load_dotenv
 
-courses = json.load(open('./config.json'))['groups']
+load_dotenv()
+
+client = pymongo.MongoClient(os.getenv('DB_URL'))
+db = client[os.getenv('DB_NAME')]
+courses = db.config.find_one({})['config']['groups']
+
 def build_menu(buttons,
                n_cols,
                header_buttons=None,

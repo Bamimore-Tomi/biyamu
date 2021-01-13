@@ -9,23 +9,20 @@ import string
 import telegram
 from telegram.ext import Updater
 from telegram.ext import CommandHandler, MessageHandler, Filters,ConversationHandler,CallbackQueryHandler
-from telegram import InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton, ReplyKeyboardMarkup
 from dotenv import load_dotenv
 import pymongo
 
 from keyboard import courses_keyboard, yes_or_no
 from utils import payment_url
 
-import pickle
 
 load_dotenv()
 #parse_mode=telegram.ParseMode.MARKDOWN
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.DEBUG)
-config = json.load(open("./config.json"))
 TOKEN = os.getenv('TOKEN')
 client = pymongo.MongoClient(os.getenv('DB_URL'))
 db = client[os.getenv('DB_NAME')]
-
+config = db.config.find_one({})['config']
 ENROLL, NEW_COURSE, PAYMENT_INITIATED, EMAIL_PROMPT = range(4)
 def start(updater,context):
     chat_id = updater.effective_chat.id
