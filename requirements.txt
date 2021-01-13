@@ -7,3 +7,4 @@ python_telegram_bot==13.1
 python-dotenv==0.15.0
 dnspython==2.1.0
 gunicorn==20.0.4
+pillow
